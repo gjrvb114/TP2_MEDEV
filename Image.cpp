@@ -8,8 +8,23 @@ Image::Image(){
 }
 Image::Image(std::ifstream* fichier)
 {
-    
-    
+    std::vector<int> vecteur_vide;
+    int level;
+    //on saute les deux premières lignes
+    std::string str_courant;
+    getline(*fichier, str_courant);
+    getline(*fichier, str_courant);
+    int n, m;
+    *fichier >> n >> m >> niveauDeGris;
+    for(int i=0; i<n ; i++)
+    {
+        tableau.push_back(vecteur_vide);
+        for(int j=0 ; j<m ; j++)
+        {
+            *fichier >> level;
+            tableau.back().push_back(level);
+        }       
+    }
 }
 
 ~Image()
