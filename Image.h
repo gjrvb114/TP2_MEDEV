@@ -1,3 +1,14 @@
+/*
+TP2_MEDEV
+
+COPPIN Jimmy
+GOBINET Paul-Loup
+MICHEL Louis
+MOUGEOT Guillaume
+
+le 24/11/2016
+*/
+
 #pragma once
 
 #include "includes.h"
@@ -9,13 +20,14 @@ private:
     
 public:
     Image(){};
+	Image(const Image& image): niveauDeGris(image.niveauDeGris), tableau(image.tableau){}
     //lecture d'un fichier pgm pour créer un objet image
     Image(std::ifstream* fichier);
-    //création d'un fichier pgm à partir d'un objet image
+    //création d'un fichier pgm à partir d'un objet image, on remplit fichier
     void ecrireImage(std::ofstream* fichier) const;
     
-    void seuillage(const int& seuil);
+    Image seuillage(const int& seuil);
     Image difference(const Image& image) const;
-    void redimensionnement(const int& w, const int& h);
+    Image redimenssionnement(const int& h, const int& w);
 };
 
