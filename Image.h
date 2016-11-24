@@ -16,7 +16,6 @@ public:
     
     void seuillage(const int& seuil);
     Image difference(const Image& image) const;
-    void aggrandissement(const int& facteur);
-    void retrecissement(const int& facteur);
+    void Image::redimensionnement(const int& w, const int& h);
 };
 
