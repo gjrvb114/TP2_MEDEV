@@ -6,8 +6,8 @@ Image::Image(std::ifstream* fichier) {
     int level;
     //on saute les deux premières lignes
     std::string str_courant;
-    getline(*fichier, str_courant);
-    getline(*fichier, str_courant);
+    std::getline(*fichier, str_courant);
+    std::getline(*fichier, str_courant);
     int n, m;
     *fichier >> n >> m >> niveauDeGris;
     for (int i = 0; i < n; i++) {
@@ -15,6 +15,39 @@ Image::Image(std::ifstream* fichier) {
         for (int j = 0; j < m; j++) {
             *fichier >> level;
             tableau.back().push_back(level);
+        }
+    }
+}
+
+int nombreDeChiffre(int ndg)
+{
+    int out(1);
+    while(ndg>10)
+    {
+        ndg/=10;
+        out++;
+    }
+    return out;
+}
+
+void Image::ecrireImage(std::ofstream* fichier) const
+{
+    *fichier << "P2\n#\n";
+    *fichier << tableau.size() << " " << tableau[0].size() << '\n';
+    *fichier << niveauDeGris << '\n';
+    int nb_par_ligne = 70/(1+nombreDeChiffre(niveauDeGris));
+    int k(0);
+    for(int i=0 ; i<tableau.size() ; i++)
+    {
+        for(int j=0 ; j<tableau[0].size() ; j++)
+        {
+            *fichier << tableau[i][j];
+            if(k==nb_par_ligne)
+            {
+                *fichier << '\n';
+                k=0;
+            }
+            k++;
         }
     }
 }
@@ -58,7 +91,6 @@ void Image::redimensionnement(const int& w, const int& h) {
         {
             tab.push_back(New);
         for (j = 0; j < w; j++) {
-            int niveau;
             XinOrigin = float(i) * float(tableau[0].size()) / float(w);
             YinOrigin = float(j) * float(tableau.size()) / float(h);
             if (XinOrigin<floor(XinOrigin) + 0.5) {

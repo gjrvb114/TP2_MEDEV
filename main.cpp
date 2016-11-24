@@ -2,7 +2,7 @@
 #include "Image.h"
 
 int main() {
-    ifstream fichier("lena.pgm");
+    std::ifstream fichier("lena.pgm");
     if(!fichier)
     {
         std::cerr<<"fichier introuvable";
