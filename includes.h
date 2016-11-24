@@ -6,4 +6,3 @@
 #include <stdlib.h>
 #include <iostream>
 #include <cmath>
-//#include <algorithm>
