@@ -51,22 +51,25 @@ Image Image::difference(const Image& image) const {
 void Image::redimensionnement(const int& w, const int& h) {
     std::vector<std::vector<int> > tab;
     int i, j;
+    vector<int> New ;
     int XinSource, YinSource;
     float XinOrigin, YinOrigin;
-    for (i = 0; i < h; i++) {
+    for (i = 0; i < h; i++)
+        {
+            tab.push_back(New);
         for (j = 0; j < w; j++) {
             int niveau;
             XinOrigin = float(i) * float(tableau[0].size()) / float(w);
             YinOrigin = float(j) * float(tableau.size()) / float(h);
             if (XinOrigin<floor(XinOrigin) + 0.5) {
-                XinSource = floor(XinOrigin);
+                XinSource = max(floor(XinOrigin),float(0));
             } else {
-                XinSource = ceil(XinOrigin);
+                XinSource = min(ceil(XinOrigin),float(tableau[0].size()));
             }
             if (YinOrigin<floor(YinOrigin) + 0.5) {
-                YinSource = floor(YinOrigin);
+                YinSource = max(floor(YinOrigin),float(0));
             } else {
-                YinSource = ceil(YinOrigin);
+                YinSource = min(ceil(YinOrigin),float(tableau.size()));
             }
 
             tab[i].push_back(tableau[XinSource][YinSource]);
