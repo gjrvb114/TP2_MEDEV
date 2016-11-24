@@ -1,14 +1,6 @@
-/* 
- * File:   Image.h
- * Author: eleve
- *
- * Created on 24 novembre 2016, 09:40
- */
-
 #pragma once
 
-#include <vector>
-#include <fstream>
+#include "includes.h"
 
 class Image{
 private:

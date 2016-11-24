@@ -1,11 +1,4 @@
-/* 
- * File:   main.cpp
- * Author: eleve
- *
- * Created on 24 novembre 2016, 08:03
- */
-
-#include <iostream>
+#include "includes.h"
 #include "Image.h"
 
 int main() {

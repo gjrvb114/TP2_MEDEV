@@ -1,6 +1,5 @@
 #include "Image.h"
-#include <string>
-#include "math.h"
+#include "includes.h"
 
 Image::Image(std::ifstream* fichier)
 {
