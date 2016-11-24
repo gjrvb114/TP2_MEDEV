@@ -16,8 +16,9 @@ private:
     vector<vector<int> > tableau;
     
 public:
+    Image();
     Image(std::ifstream* fichier);
-    
+    ~Image();
     void seuillage(const int& seuil);
     Image difference(const Image& image);
     void aggrandissement(const int& facteur);
