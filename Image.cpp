@@ -1,12 +1,13 @@
-
-
 #include "Image.h"
+#include <string>
 #include "math.h"
 
-void Image::Image(std::ifstream* fichier)
+Image::Image(std::ifstream* fichier)
 {
-    
-    
+    //on saute les deux premières lignes
+    std::string str_courant;
+    getline(*fichier, str_courant);
+    getline(*fichier, str_courant); 
 }
 
 void Image::seuillage(const int& seuil)
@@ -34,7 +35,5 @@ void Image::seuillage(const int& seuil)
 Image Image::difference(const Image& image)
 {
     Image Nouvelle = Image()
-    
-    
-    
 }
+

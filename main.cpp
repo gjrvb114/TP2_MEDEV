@@ -6,10 +6,19 @@
  */
 
 #include <iostream>
+#include "Image.h"
 
 using namespace std;
 
 int main() {
-    cout << "Hello World !" << endl;
+    ifstream fichier("lena.pgm");
+    if(!fichier)
+    {
+        std::cerr<<"fichier introuvable";
+    }
+    else
+    {
+        Image image(&fichier);
+    }
     return 0;
 }
