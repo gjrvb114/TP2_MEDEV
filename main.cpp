@@ -10,6 +10,8 @@ int main() {
     else
     {
         Image image(&fichier);
+        std::ofstream test("test.pgm");
+        image.ecrireImage(&test);
     }
     return 0;
 }

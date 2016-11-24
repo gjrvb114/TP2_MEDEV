@@ -42,10 +42,14 @@ void Image::ecrireImage(std::ofstream* fichier) const
         for(int j=0 ; j<tableau[0].size() ; j++)
         {
             *fichier << tableau[i][j];
-            if(k==nb_par_ligne)
+            if(k==nb_par_ligne-1)
             {
                 *fichier << '\n';
                 k=0;
+            }
+            else
+            {
+                *fichier << " ";
             }
             k++;
         }
@@ -63,9 +67,7 @@ void Image::seuillage(const int& seuil) {
                 tableau[i][j] = 255;
             }
         }
-
     }
-
 }
 
 Image Image::difference(const Image& image) const {
@@ -75,16 +77,14 @@ Image Image::difference(const Image& image) const {
     for (i = 0; i < tableau.size(); i++) {
         for (j = 0; j < tableau[0].size(); j++) {
             Nouvelle.tableau[i][j] = abs(tableau[i][j] - image.tableau[i][j]);
-
         }
     }
-
 }
 
 void Image::redimensionnement(const int& w, const int& h) {
     std::vector<std::vector<int> > tab;
     int i, j;
-    vector<int> New ;
+    std::vector<int> New ;
     int XinSource, YinSource;
     float XinOrigin, YinOrigin;
     for (i = 0; i < h; i++)
@@ -94,21 +94,17 @@ void Image::redimensionnement(const int& w, const int& h) {
             XinOrigin = float(i) * float(tableau[0].size()) / float(w);
             YinOrigin = float(j) * float(tableau.size()) / float(h);
             if (XinOrigin<floor(XinOrigin) + 0.5) {
-                XinSource = max(floor(XinOrigin),float(0));
+                XinSource = std::max(floor(XinOrigin),double(0));
             } else {
-                XinSource = min(ceil(XinOrigin),float(tableau[0].size()));
+                XinSource = std::min(ceil(XinOrigin),double(tableau[0].size()));
             }
             if (YinOrigin<floor(YinOrigin) + 0.5) {
-                YinSource = max(floor(YinOrigin),float(0));
+                YinSource = std::max(floor(YinOrigin),double(0));
             } else {
-                YinSource = min(ceil(YinOrigin),float(tableau.size()));
+                YinSource = std::min(ceil(YinOrigin),double(tableau.size()));
             }
-
             tab[i].push_back(tableau[XinSource][YinSource]);
         }
-
     }
     tableau = tab;
-
-
 }
